@@ -6,29 +6,26 @@ const retailers = ({ datas }) => {
   return (
     <section className="antialiased text-gray-600 m-10 overflow-hidden">
       <div className="flex flex-col justify-center">
-        <div className="w-full max-w-7xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
-          {/* <header className="px-5 py-4 border-b border-gray-100">
-            <h2 className="font-semibold text-gray-800">Retailers</h2>
-          </header> */}
-          <h3 className='px-5 py-4 border-b border-gray-100'>
-            Some of the authorized Retailers
-          </h3>
+        <div className="w-full max-w-7xl mx-auto bg-[#f6f7f8] shadow-lg rounded-lg border-2 border-black-200">
+          <h2 className="max-w-lg font-sans text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none p-5">
+            Authorized Retailers
+          </h2>
           <div className="p-3">
-            <div className="overflow-hidden">
+            <div className="overflow-x-auto">
               <table className="table-auto w-full">
                 <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                   <tr>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Name</div>
+                      <div className="font-bold text-lg text-left">Name</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Email</div>
+                      <div className="font-bold text-lg text-left">Email</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-left">Contact</div>
+                      <div className="font-bold text-lg text-left">Contact</div>
                     </th>
                     <th className="p-2 whitespace-nowrap">
-                      <div className="font-semibold text-center">Address</div>
+                      <div className="font-bold text-lg text-center">Address</div>
                     </th>
                   </tr>
                 </thead>
@@ -36,11 +33,11 @@ const retailers = ({ datas }) => {
                   {
                     datas.data.map(function (retail) {
                       return (
-                        <tr key={retail.id}>
-                          <td className="p-2 whitespace-nowrap">
+                        <tr key={retail.id} className="hover:bg-blue-200">
+                          <td className="p-2 whitespace-nowrap ">
                             <div className="flex items-center">
                               <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                                <img className="rounded-full" src= {`${STRAPI_BASEURL + retail.attributes.avatar.data.attributes.url}`} width="40" height="40" alt="Alex Shatov" />
+                                <img className="rounded-full" src={`${STRAPI_BASEURL + retail.attributes.avatar.data.attributes.url}`} width="40" height="40" alt="Alex Shatov" />
                               </div>
                               <div className="font-medium text-gray-800"> {retail.attributes.name} </div>
                             </div>
@@ -49,10 +46,10 @@ const retailers = ({ datas }) => {
                             <div className="text-left"> {retail.attributes.email} </div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
-                            <div className="text-left font-medium text-green-500"> {retail.attributes.phone} </div>
+                            <div className="text-left font-medium text-gray-500"> {retail.attributes.contact} </div>
                           </td>
                           <td className="p-2 whitespace-nowrap">
-                            <div className="text-md text-center"> {retail.attributes.location} </div>
+                            <div className="text-md text-center"> {retail.attributes.address} </div>
                           </td>
                         </tr>
                       )

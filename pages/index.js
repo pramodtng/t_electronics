@@ -2,7 +2,7 @@
 import React from "react";
 import Phones from './../components/Phones';
 
-export default function Home({ res }) {
+export default function Home({ posts }) {
   return (
     <><div className="relative w-full mx-auto">
       <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
@@ -82,17 +82,7 @@ export default function Home({ res }) {
       </div>
     </div>
       <Phones />
+      <p> {JSON.stringify(posts)} </p>
     </>
   );
-}
-
-
-export async function getStaticProps() {
-  const sliders = await fetch('http://localhost:1337/api/sliders?populate=*')
-  const res = await sliders.json();
-  return {
-    props: {
-      res
-    }
-  }
 }

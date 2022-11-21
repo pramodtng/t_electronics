@@ -8,25 +8,24 @@ const gallery = ({ res }) => {
   const STRAPI_BASEURL = 'http://localhost:1337'
 
   return (
-    <div className='round-lg columns-2 md:columns-1 lg:columns-3 p-10'>
+    <div class="container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3 px-10">
       {
-        res.data.map(function (images) {
+        res.data.map(function (image) {
           return (
-            <div key={images.id}>
-              <img className="mb-4" src={`${STRAPI_BASEURL + images.attributes.images.data.attributes.formats.large.url}`} alt= {images.attributes.caption} />
+            <div className='w-full rounded hover:opacity-50' key={image.id}>
+              <img src={`${STRAPI_BASEURL + image.attributes.image.data.attributes.url}`} alt= {image.attributes.caption} />
             </div>
           )
         })
       }
     </div>
-
   )
 }
 
 export default gallery
 
 export async function getStaticProps() {
-  const datas = await fetch('http://localhost:1337/api/photos?populate=*')
+  const datas = await fetch('http://localhost:1337/api/galleries?populate=*')
   const res = await datas.json();
   return {
     props: {
