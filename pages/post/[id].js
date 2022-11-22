@@ -2,6 +2,8 @@
 import React from 'react'
 import parse from 'html-react-parser'
 import dayjs from 'dayjs'
+const https = require('https');
+
 
 
 const Posts = ({ post }) => {
@@ -31,7 +33,13 @@ export default Posts
 
 
 export async function getStaticProps({ params }) {
-  const posts = await fetch(`https://tashielectronicsbackend.tashicell.com/api/posts/${params.id}?populate=*`)
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+  const posts = await fetch(`https://tashielectronicsbackend.tashicell.com/api/posts/${params.id}?populate=*`, {
+    method: 'GET',
+    agent
+  })
   const res = await posts.json()
   return {
     props: {
@@ -41,7 +49,13 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await fetch('https://tashielectronicsbackend.tashicell.com/api/posts?populate=*')
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+  const posts = await fetch('https://tashielectronicsbackend.tashicell.com/api/posts?populate=*', {
+    method: 'GET',
+    agent
+  })
   const res = await posts.json()
   const paths = res.data.map((post) => {
     return {
