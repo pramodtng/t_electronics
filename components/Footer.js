@@ -9,8 +9,6 @@ const Footer = () => {
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            {/* <span className="block h-10 w-32 rounded-lg bg-gray-200"></span> */}
-
             <h2 className="mt-4 max-w-xs text-xl text-gray-500">
               Tashi Electronics
             </h2>
@@ -94,9 +92,15 @@ const Footer = () => {
 
             <div>
               <p className="font-medium">Helpful Links</p>
-              <div className="mt-4 flex flex-col space-y-2 text-sm text-gray-500">
+              <div className="mt-4 flex flex-col spjace-y-2 text-sm text-gray-500">
                 <Link href= "/contact" className="hover:opacity-75">
                   Contact
+                </Link>
+                <Link href= "https://www.samsung.com/us/smartphones/" className="hover:opacity-75">
+                  Samsung Phones
+                </Link>
+                <Link href= "https://www.tashicell.com/" className="hover:opacity-75">
+                  TashiCell
                 </Link>
               </div>
             </div>
