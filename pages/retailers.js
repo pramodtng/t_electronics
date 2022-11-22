@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
+const https = require('https');
+
 
 const retailers = ({ datas }) => {
-  const STRAPI_BASEURL = 'http://localhost:1337'
+  const STRAPI_BASEURL = 'https://tashielectronicsbackend.tashicell.com'
   return (
     <section className="antialiased text-gray-600 m-10 overflow-hidden">
       <div className="flex flex-col justify-center">
@@ -69,7 +71,13 @@ export default retailers
 
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:1337/api/retailers?populate=*')
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+  const res = await fetch('https://tashielectronicsbackend.tashicell.com/api/retailers?populate=*',{
+    method: 'GET',
+    agent
+  })
   const data = await res.json();
   return {
     props: {

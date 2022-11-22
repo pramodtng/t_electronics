@@ -2,6 +2,8 @@ import React from 'react'
 import Flagship from '../components/Flagship';
 import Latest from '../components/Latest'
 import Selling from './../components/Selling';
+const https = require('https');
+
 
 const phones = ({result, results, sell}) => {
   return (
@@ -39,9 +41,21 @@ const phones = ({result, results, sell}) => {
 export default phones
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:1337/api/latests?populate=*')
-  const flag = await fetch('http://localhost:1337/api/flagships?populate=*')
-  const selling = await fetch('http://localhost:1337/api/sellings?populate=*')
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+  const res = await fetch('https://tashielectronicsbackend.tashicell.com/api/latests?populate=*', {
+    method: 'GET',
+    agent
+  })
+  const flag = await fetch('https://tashielectronicsbackend.tashicell.com/api/flagships?populate=*',  {
+    method: 'GET',
+    agent
+  })
+  const selling = await fetch('https://tashielectronicsbackend.tashicell.com/api/sellings?populate=*',  {
+    method: 'GET',
+    agent
+  })
   const result = await res.json()
   const results = await flag.json()
   const sell = await selling.json()

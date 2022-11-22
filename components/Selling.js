@@ -8,7 +8,7 @@ import { data } from 'autoprefixer'
 
 const Selling = ({ result }) => {
   const [showModal, setShowModal] = useState(false);
-  const STRAPI_BASEURL = 'http://localhost:1337'
+  const STRAPI_BASEURL = 'https://tashielectronicsbackend.tashicell.com'
   return (
     <div className='bg-white'>
       <div className='mx-auto max-w-2xl py-2 px-4 sm:px-6 lg:max-w-7xl lg:px-4'>

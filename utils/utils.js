@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:1337'
+const baseUrl = 'https://tashielectronicsbackend.tashicell.com'
 // const dev = process.env.NODE_ENV !== 'production';
 
 async function fetchQuery(path, params = null) {

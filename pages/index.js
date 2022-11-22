@@ -82,7 +82,6 @@ export default function Home({ posts }) {
       </div>
     </div>
       <Phones />
-      <p> {JSON.stringify(posts)} </p>
     </>
   );
 }

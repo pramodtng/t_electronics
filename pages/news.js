@@ -2,9 +2,11 @@
 import React from 'react'
 import dayjs from 'dayjs'
 import Link from 'next/link'
+const https = require('https');
+
 
 const news = ({ posts }) => {
-  const STRAPI_BASEURL = 'http://localhost:1337'
+  const STRAPI_BASEURL = 'https://tashielectronicsbackend.tashicell.com'
   return (
     <div className="container mt-5 px-6 mx-auto bg-[#f7f8fa]">
       <section className="mb-10 text-center">
@@ -17,7 +19,7 @@ const news = ({ posts }) => {
                   <div key={post.id} className="group relative p-5 shadow-lg rounded-t-lg bg-white">
                     <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md  group-hover:opacity-75 lg:aspect-none lg:h-80 mb-5">
                       <img src={`${STRAPI_BASEURL + post.attributes.image.data.attributes.url}`} alt="images" className='h-full w-full object-cover object-center lg:h-full lg:w-full' />
-                      <a href= {`post/${post.id}`} >
+                      <a href={`post/${post.id}`} >
                         <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"></div>
                       </a>
                     </div>
@@ -46,10 +48,12 @@ const news = ({ posts }) => {
 export default news
 
 export async function getStaticProps() {
-  const results = await fetch('http://localhost:1337/api/posts?populate=*', {
-    filters: {
-      categories: "blogs"
-    }
+  const agent = new https.Agent({
+    rejectUnauthorized: false
+  });
+  const results = await fetch('https://tashielectronicsbackend.tashicell.com/api/posts?populate=*', {
+    method: 'GET',
+    agent
   })
   const posts = await results.json()
   return {
