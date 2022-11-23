@@ -44,15 +44,15 @@ export async function getStaticProps() {
   const agent = new https.Agent({
     rejectUnauthorized: false
   });
-  const res = await fetch('https://tashielectronicsbackend.tashicell.com/api/latests?populate=*', {
+  const res = await fetch('https://tashielectronicsbackend.tashicell.com/api/phones?populate=*', {
     method: 'GET',
     agent
   })
-  const flag = await fetch('https://tashielectronicsbackend.tashicell.com/api/flagships?populate=*',  {
+  const flag = await fetch('https://tashielectronicsbackend.tashicell.com/api/phones?populate=*',  {
     method: 'GET',
     agent
   })
-  const selling = await fetch('https://tashielectronicsbackend.tashicell.com/api/sellings?populate=*',  {
+  const selling = await fetch('https://tashielectronicsbackend.tashicell.com/api/phones?populate=*',  {
     method: 'GET',
     agent
   })
